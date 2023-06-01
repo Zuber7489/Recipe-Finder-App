@@ -1,0 +1,37 @@
+<h2 class="text-center text-warning">Recipe Finder App</h2>
+    <div class="input-box">
+      <i class="uil uil-search"></i>
+      <input type="text" placeholder="Search here..." [(ngModel)]="recipevalue" />
+      <button class="button" (click)="searchrecipe(recipevalue)">Search</button>
+    </div>
+
+  
+  
+  <section id="gallery" class="justify-content-center d-flex">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4" *ngFor="let datarecipe of data.hits">
+          <div class="card h-100">
+            <img [src]="datarecipe.recipe.image" alt="" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title text-warning mt-3">{{ datarecipe.recipe.label }}</h5><hr class="bg-warning">
+              <p class="card-text">
+              <ol><ng-container *ngFor="let ingredient of datarecipe.recipe.ingredientLines; let i = index">
+                  <li *ngIf="i < 3">{{ ingredient }}</li>
+                  <li *ngIf="i >= 3" [hidden]="!showFullText">{{ ingredient }}</li>
+                </ng-container>
+              </ol>
+              <button class="btn btn-outline-success btn-sm" (click)="toggleShowFullText()">Read More</button>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+<!-- new-ui -->
+
+
